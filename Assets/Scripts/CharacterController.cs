@@ -51,7 +51,6 @@ public class CharacterController : MonoBehaviour
             {
                 if (Input.GetAxis("Horizontal") < 0 && lane > -1) lane--;
                 if (Input.GetAxis("Horizontal") > 0 && lane < 1) lane++;
-                //transform.position.Set(transform.position.x, transform.position.y, lane * 2);
             }
         }
 
@@ -65,12 +64,12 @@ public class CharacterController : MonoBehaviour
         }
 
         // smoothly translate character between lanes
-        float zTime = 0.08f;                                        // amount of time (seconds) it takes to change lanes;
-        float zError = lane * -laneWidth - transform.position.z;    // how far the character is form where it should be. laneWidth is inverted so that controls are correct.
-        float zMax = laneWidth / zTime * Time.deltaTime;            // maximum translation amont in this frame
-        float zTranslateAmout = Mathf.Clamp(zError, -zMax, zMax);   // how much the character is translated in this frame. (Mathf.Clamp sets correct +/- sign to zMax and prevents overshooting)
+        float xTime = 0.08f;                                        // amount of time (seconds) it takes to change lanes;
+        float xError = lane * laneWidth - transform.position.x;     // how far the character is form where it should be.
+        float xMax = laneWidth / xTime * Time.deltaTime;            // maximum translation amont in this frame
+        float xTranslateAmout = Mathf.Clamp(xError, -xMax, xMax);   // how much the character is translated in this frame. (Mathf.Clamp sets correct +/- sign to zMax and prevents overshooting)
 
         // move character
-        transform.Translate(0, velocityY * Time.deltaTime, zTranslateAmout);
+        transform.Translate(xTranslateAmout, velocityY * Time.deltaTime, 0);
     }
 }
