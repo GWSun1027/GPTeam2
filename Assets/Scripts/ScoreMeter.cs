@@ -24,6 +24,5 @@ public class ScoreMeter : MonoBehaviour
         gameSpeed = startingSpeed + Time.timeSinceLevelLoad * gameSpeedMultiplier;
         score = (int)Mathf.Pow(Time.timeSinceLevelLoad, 2);
         textComponent.text = ("SCORE: " + score.ToString());
-        Debug.Log(Time.realtimeSinceStartup);
     }
 }
