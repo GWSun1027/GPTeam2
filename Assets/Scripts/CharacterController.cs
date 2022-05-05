@@ -71,6 +71,5 @@ public class CharacterController : MonoBehaviour
 
         // move character
         transform.Translate(translateAmount, velocityY * Time.deltaTime, 0);
-        Debug.Log(transform.position.y + " " + velocityY);
     }
 }
